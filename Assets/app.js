@@ -7,6 +7,7 @@ setInterval(function () {
 }, 1000);
 
 
+
 console.log(moment());
 
 // This is our API key. Add your own API key between the ""
@@ -33,16 +34,13 @@ $.ajax({
     // Create CODE HERE to log the resulting object
     console.log(response);
 
-    // calculating conversion from Kelvin to Farenheit
-    let K = response.list[0].main.temp;
-    let F = (K - 273.15) * 1.80 + 32;
+
 
     // Current days info
     //********************************************** */
     $(".city").text(response.city.name);
     $(".wind").text(response.list[0].wind.speed);
-    $(".humidity").text(response.list[0].main.humidity);
-    $(".temp").text(F.toFixed(1));
+
     // we still need to the UV index
     // lon & lat for the uv index
     // response.city.coord.lat
@@ -52,8 +50,26 @@ $.ajax({
 
     // cards
     //********************************************** */
-    // temp
-    // humidity
+    for (let i = 0; i < 5; i++) {
+        // calculating conversion from Kelvin to Farenheit
+        let K = response.list[i].main.temp;
+        let F = (K - 273.15) * 1.80 + 32;
+
+        // humidity for all the days
+        $(".humidity" + i).text(response.list[i].main.humidity);
+        // temp converted to ºF for all the dates
+        $(".temp" + i).text(F.toFixed(1));
+
+        // setting the current date for the jumbotron display
+        $('.day'+i).text(moment().add(i, 'days').format('M/DD/YY'));
+        console.log(i);
+
+    }
+    //********************************************** */
+
+
+
+
 
 
 

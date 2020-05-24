@@ -14,7 +14,7 @@
 
     <nav class="navbar navbar-dark bg-dark navbar-light" style="background-color: #e3f2fd;">
         <h1 class="text-white">Weather Dashboard</h1>
-        <span class="navbar-brand mb-0 h1" id="currentDay"></span>
+        <span class="navbar-brand mb-0 h1" id="day0"></span>
         <!-- <a class="navbar-brand" href="#">
             <img src="/docs/4.5/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="" loading="lazy">
         </a> -->
@@ -30,9 +30,11 @@
                     <div class="col-12">
                         <h3>Search For a City:</h3>
                         <form class="form-inline">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search a City" aria-label="Search">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search a City"
+                                aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" id="searchCity"
+                                type="submit">Search</button>
                         </form>
-                        <button class="btn btn-outline-success my-2 my-sm-0" id="searchCity" type="submit">Search</button>
                     </div>
                     <!-- searched cities -->
                     <div class="col-12 mt-3">
@@ -41,7 +43,7 @@
                             <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
                             <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
                             <!-- <a href="#" class="list-group-item list-group-item-action disabled active" tabindex="-1" aria-disabled="true">Vestibulum at eros</a> -->
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -51,37 +53,60 @@
                     <div class="col-12">
                         <div class="jumbotron jumbotron-fluid py-4 px-4 font-weight-bold">
                             <div class="container"></div>
-                                <h1 class="display-4"><span class="city"></span>(<span class="currentDate"></span>) <span class="currentWeatherIcon"></span></h1>
-                                <div class="mt-3">Wind Speeds : <span class="wind"></span> MPH</div>
-                                <div class="mt-3">Humidity : <span class="humidity"></span>%</div>
-                                <div class="mt-3">Temperature : <span class="temp"></span> ºF</div>
-                                <div class="mt-3">UV Index : <div class="uvIndex bg-danger rounded d-inline p-2 text-light"></div></div>
+                            <h1 class="display-4"><span class="city"></span> (<span class="day0"></span>) <span
+                                    class="currentWeatherIcon"></span></h1>
+                            <div class="mt-3">Wind Speeds : <span class="wind"></span> MPH</div>
+                            <div class="mt-3">Humidity : <span class="humidity0"></span>%</div>
+                            <div class="mt-3">Temperature : <span class="temp0"></span> ºF</div>
+                            <div class="mt-3">UV Index : <div class="uvIndex bg-danger rounded d-inline p-2 text-light">
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- 5-DAY FORECAST  -->
-                    <div class="col-12">
-                        <h1 class="ml-n3">5-Day forecast:</h1>
-                        <div class="row  d-flex justify-content-between">
-                            <div class="col-2 bg-primary">this is where the forecast's will live</div>
-                            <div class="col-2 bg-primary">this is where the forecast's will live</div>
-                            <div class="col-2 bg-primary">this is where the forecast's will live</div>
-                            <div class="col-2 bg-primary">this is where the forecast's will live</div>
-                            <div class="col-2 bg-primary">this is where the forecast's will live</div>
+                </div>
+                <!-- 5-DAY FORECAST  -->
+                <div class="col-12">
+                    <h1 class="ml-n3">5-Day forecast:</h1>
+                    <div class="row  d-flex justify-content-between">
+                        <div class="col-2 bg-primary"> 
+                            <div><span class="day1"></span></div>
+                            <div>Temperature : <span class="temp1"></span>ºF</div>
+                            <div>Humidity :<span class="humidity1"></span>%</div>
+                            
+                        </div>
+                        <div class="col-2 bg-primary"> 
+                            <div><span class="day2"></span></div>
+                            <div>Temperature : <span class="temp2"></span>ºF</div>
+                            <div>Humidity :<span class="humidity2"></span>%</div>
+                            
+                        </div>
+                        <div class="col-2 bg-primary"> 
+                            <div><span class="day3"></span></div>
+                            <div>Temperature : <span class="temp3"></span>ºF</div>
+                            <div>Humidity :<span class="humidity3"></span>%</div>
+                            
+                        </div>
+                        <div class="col-2 bg-primary"> 
+                            <div><span class="day4"></span></div>
+                            <div>Temperature : <span class="temp4"></span>ºF</div>
+                            <div>Humidity :<span class="humidity4"></span>%</div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
 
 
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://momentjs.com/downloads/moment.min.js"></script></script>
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    </script>
     <script type="text/javascript" src="Assets/app.js"></script>
-    
+
 </body>
 
 </html>
