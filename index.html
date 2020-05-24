@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Monterrey Data</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="Assets/style.css">
+</head>
+
+<body>
+
+
+
+    <nav class="navbar navbar-dark bg-dark navbar-light" style="background-color: #e3f2fd;">
+        <h1 class="text-white">Weather Dashboard</h1>
+        <!-- <a class="navbar-brand" href="#">
+            <img src="/docs/4.5/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="" loading="lazy">
+        </a> -->
+    </nav>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- SEARCH BAR AND HISTORY -->
+            <div class="col-3 mt-3">
+                <div class="row">
+                    <!-- search bar -->
+                    <div class="col-12">
+                        <h3>Search For a City:</h3>
+                        <form class="form-inline">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search a City" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                    <!-- searched cities -->
+                    <div class="col-12 mt-3">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                            <!-- <a href="#" class="list-group-item list-group-item-action disabled active" tabindex="-1" aria-disabled="true">Vestibulum at eros</a> -->
+                          </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9 mt-3">
+                <div class="row">
+                    <!-- FORECAST JUMBOTRON-->
+                    <div class="col-12">
+                        <div class="jumbotron jumbotron-fluid py-4 px-4 font-weight-bold">
+                            <div class="container"></div>
+                                <h1 class="display-4">City : <span class="city"></span></h1>
+                                <div class="mt-3">Wind Speeds : <span class="wind"></span> MPH</div>
+                                <div class="mt-3">Humidity : <span class="humidity"></span>%</div>
+                                <div class="mt-3">Temperature : <span class="temp"></span> F</div>
+                                <div class="mt-3">UV Index : <div class="uvIndex bg-danger rounded d-inline p-2 text-light">5.3</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 5-DAY FORECAST  -->
+                    <div class="col-12">
+                        <h1 class="ml-n3">5-Day forecast:</h1>
+                        <div class="row  d-flex justify-content-between">
+                            <div class="col-2 bg-primary">this is where the forecast's will live</div>
+                            <div class="col-2 bg-primary">this is where the forecast's will live</div>
+                            <div class="col-2 bg-primary">this is where the forecast's will live</div>
+                            <div class="col-2 bg-primary">this is where the forecast's will live</div>
+                            <div class="col-2 bg-primary">this is where the forecast's will live</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="Assets/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
+</body>
+
+</html>
