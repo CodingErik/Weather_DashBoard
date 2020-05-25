@@ -10,6 +10,9 @@ let APIKey = "9e86fc9e3bf21c56f84b81c96613709c";
 // this is the city we are currently searching
 let cityName = 'Monterrey,NuevoLeon';
 
+// array to keep track of history values  
+let historyArr = []
+
 
 
 // This is a default request to the API to get the user started with an example
@@ -23,8 +26,8 @@ $('#searchCity').on('click', function (e) {
     // this is the value that is typed in by the user 
     let value = $('#cityInputValue').val()
 
+    // if the input is not value the don't run the request 
     if (value === '') {
-        // if the input is not value the don't run the request 
         return
     } else {
         requestAjax(value);
@@ -46,15 +49,22 @@ function requestAjax(cityName) {
         // coordinates of current city 
         let lat = response.city.coord.lat;
         let lon = response.city.coord.lon;
+
         // for testing pusporses
         // console.log(lat);
         // console.log(lon);
 
+
+        //CITY APPEND WAS HERE ************ ************ ************
         // prependding search entry to history 
         // it will not append if the city has been searched before
-        // if(cityName)
-        // ************CITY APPEND WAS HERE
         prependCity(cityName);
+        //********************************************** */
+
+
+
+
+
 
         // Current days info
         //********************************************** */
@@ -167,16 +177,16 @@ function requestAjax(cityName) {
 }
 
 
-// this is mapped the the search history buttons 
+// this is mapped to the search history buttons 
 // when we click on any of the buttons we run a request for that city again
 $('.searchHistory').on('click', function (e) {
-    let userSelection = $(e.target).text();  //e.target.innerText;
+    let historySelection = $(e.target).text();  //e.target.innerText;
 
     // to see the user input value test  
-    // console.log(userSelection);
+    // console.log(historySelection);
 
     // sends request to our requestAjax function
-    requestAjax(userSelection);
+    requestAjax(historySelection);
 
 });
 
@@ -185,17 +195,28 @@ $('.searchHistory').on('click', function (e) {
 // this function prepends a history selection
 function prependCity(cityName) {
 
-    // have some way of not prepend things that have already been prepended
-
-    // if(cityName === )
-
-
+    // DONE
+    // need to have some way of checking the appended values
+    // so that we don't append if the value has already been appended
+    // this for loop iterates through out values to makes sure that we don't append something
+    // that has already been appended
+    for (let i = 0; i < historyArr.length; i++) {
+        if (cityName === historyArr[i]) {
+            // we return because the item is already in the list and does not need to be 
+            // prepended again
+            return
+        }
+    }
 
     // prependding search entry to history 
     // it will not append if the city has been searched before
     // if(cityName)
+    // ${i}
     $('.searchHistory').prepend(`<a class="list-group-item list-group-item-action callbackThisTown">${cityName}</a>`);
+
+    historyArr.push(cityName);
 }
+
 
 
 
