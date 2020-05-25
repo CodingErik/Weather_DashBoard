@@ -1,29 +1,30 @@
+
+//************************************************************************************ */
+//************************************************************************************ */
 // current day, month, day, year, time time running the seconds
-// lets try to make the clock change to the local time of the place that is searched
-$("#currentDay").text(moment().format("MMMM Do YYYY hh:mm:ss A"));
+// lets try to make the clock change to display local time of the place that is searched
+// $("#currentDay").text(moment().format("MMMM Do YYYY hh:mm:ss A"));
 
-setInterval(function () {
-    $("#currentDay").text(moment().format("MMMM Do YYYY hh:mm:ss A"));
-}, 1000);
+// setInterval(function () {
+//     $("#currentDay").text(moment().format("MMMM Do YYYY hh:mm:ss A"));
+// }, 1000);
+//************************************************************************************ */
 
 
 
-console.log(moment());
-
-// This is our API key. Add your own API key between the ""
-var APIKey = "9e86fc9e3bf21c56f84b81c96613709c";
+// This is our API key
+let APIKey = "9e86fc9e3bf21c56f84b81c96613709c";
 let cityName = 'Monterrey,NuevoLeon'; //input value from the search 
 
-// this is the search button
-$('searchCity').on('click', function (e) {
-    e.preventDefault();
-    console.log('hello');
-});
-// Here we are building the URL we need to query the database
-var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + APIKey;
-// api.openweathermap.org/data/2.5/forecast?q="+cityName+"&appid=" + APIKey;
-// api.openweathermap.org/data/2.5/weather?q=Monterrey,NuevoLeoni&appid=" + APIKey;
-// We then created an AJAX call
+// // this is the search button
+// $('searchCity').on('click', function (e) {
+//     e.preventDefault();
+//     console.log('hello');
+// });
+
+// this is target URL
+let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + APIKey;
+
 $.ajax({
     url: queryURL,
     method: "GET"
@@ -51,19 +52,28 @@ $.ajax({
     // cards
     //********************************************** */
     for (let i = 0; i < 5; i++) {
+        // icon URL
+        let iconUrl = 'http://openweathermap.org/img/wn/';
+        //  individual Icon for each days forecast
+        let weatherIcon = iconUrl + response.list[i].weather[0].icon + '.png';
+        
         // calculating conversion from Kelvin to Farenheit
         let K = response.list[i].main.temp;
         let F = (K - 273.15) * 1.80 + 32;
 
         // humidity for all the days
         $(".humidity" + i).text(response.list[i].main.humidity);
+
         // temp converted to ºF for all the dates
         $(".temp" + i).text(F.toFixed(1));
 
+        // this is the icon for the each day forecast Appended to the html
+        $('.icon'+i).append('<img src='+weatherIcon+'>');
+
         // setting the current date for the jumbotron display
         $('.day'+i).text(moment().add(i, 'days').format('M/DD/YY'));
-        console.log(i);
 
+        // $('.sunrise').text(moment.unix(response.sys.sunrise).format('llll'));
     }
     //********************************************** */
 
@@ -104,6 +114,14 @@ $.ajax({
 
 
 });
+
+
+// $.ajax({
+//     url: "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey,
+//     method: "GET"
+// }).then(function(response){
+//     console.log(response)
+// })
 
 
 
