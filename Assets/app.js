@@ -1,15 +1,4 @@
 
-//************************************************************************************ */
-//************************************************************************************ */
-// current day, month, day, year, time time running the seconds
-// lets try to make the clock change to display local time of the place that is searched
-// $("#currentDay").text(moment().format("MMMM Do YYYY hh:mm:ss A"));
-
-// setInterval(function () {
-//     $("#currentDay").text(moment().format("MMMM Do YYYY hh:mm:ss A"));
-// }, 1000);
-//************************************************************************************ */
-
 
 
 // This is our API key
@@ -30,33 +19,39 @@ $.ajax({
     method: "GET"
 }).then(function (response) {
 
-    // Create CODE HERE to Log the queryURL
-    // console.log(queryURL);
-    // Create CODE HERE to log the resulting object
-    console.log(response);
-
-
+    let lat = response.city.coord.lat;
+    let lon = response.city.coord.lon;
+    console.log(lat);
+    console.log(lon);
 
     // Current days info
     //********************************************** */
     $(".city").text(response.city.name);
     $(".wind").text(response.list[0].wind.speed);
 
-    // we still need to the UV index
-    // lon & lat for the uv index
-    // response.city.coord.lat
-    // response.city.coord.lon
+    //getting the current days UV index
+    $.ajax({
+        url: `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${APIKey}`,
+        method: "GET"
+    }).then(function (response) {
+
+        // we want to provide the uv index data here
+        console.log('this is the uv index data');
+        console.log(response);
+
+
+    });
     //********************************************** */
 
 
-    // cards
+    // WEATHER FORECAST FOR EACH DAY 
     //********************************************** */
     for (let i = 0; i < 5; i++) {
         // icon URL
         let iconUrl = 'http://openweathermap.org/img/wn/';
         //  individual Icon for each days forecast
         let weatherIcon = iconUrl + response.list[i].weather[0].icon + '.png';
-        
+
         // calculating conversion from Kelvin to Farenheit
         let K = response.list[i].main.temp;
         let F = (K - 273.15) * 1.80 + 32;
@@ -68,10 +63,10 @@ $.ajax({
         $(".temp" + i).text(F.toFixed(1));
 
         // this is the icon for the each day forecast Appended to the html
-        $('.icon'+i).append('<img src='+weatherIcon+'>');
+        $('.icon' + i).append('<img src=' + weatherIcon + '>');
 
         // setting the current date for the jumbotron display
-        $('.day'+i).text(moment().add(i, 'days').format('M/DD/YY'));
+        $('.day' + i).text(moment().add(i, 'days').format('M/DD/YY'));
 
         // $('.sunrise').text(moment.unix(response.sys.sunrise).format('llll'));
     }
@@ -80,12 +75,6 @@ $.ajax({
 
 
 
-
-
-
-    // extras 
-    // $('.sunrise').text(moment.unix(response.sys.sunrise).format('llll'));
-    //********************************************** */
 
 
 
@@ -99,29 +88,24 @@ $.ajax({
     // save to local data 
     //********************************************** */
 
-    // $.ajax({
-    //     url: "http://api.openweathermap.org/data/2.5/uvi/forecast?lat={lat}&lon={lon}&appid="+ APIKey,
-    //     // let practice sending a post request
-    //     method: "GET"
-    // }).then(function(response){
 
-    //     // we want to provide the uv index data here
-    //     console.log('this is the uv index data');
-    //     console.log(response);
+    //EXTRAS*** set up a running clock for each local time 
+    //EXTRAS*** set up POST
+    //EXTRAS*** set up UV forecast for all week using the forecast Uv API
+    //************************************************************************************ */
+    //************************************************************************************ */
+    // current day, month, day, year, time time running the seconds
+    // lets try to make the clock change to display local time of the place that is searched
+    // $("#currentDay").text(moment().format("MMMM Do YYYY hh:mm:ss A"));
 
-
-    // });
-
+    // setInterval(function () {
+    //     $("#currentDay").text(moment().format("MMMM Do YYYY hh:mm:ss A"));
+    // }, 1000);
+    //************************************************************************************ */
 
 });
 
 
-// $.ajax({
-//     url: "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey,
-//     method: "GET"
-// }).then(function(response){
-//     console.log(response)
-// })
 
 
 
