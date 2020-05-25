@@ -6,23 +6,35 @@
 
 
 // This is our API key
-// let APIKey = "9e86fc9e3bf21c56f84b81c96613709c";
+let APIKey = "9e86fc9e3bf21c56f84b81c96613709c";
+// this is the city we are currently searching
+let cityName = 'Monterrey,NuevoLeon';
 
-// this is the default city 
-// let cityName = 'Monterrey,NuevoLeon'; //input value from the search 
 
 
+// This is a default request to the API to get the user started with an example
+requestAjax(cityName);
 
 // this is the search button
 $('#searchCity').on('click', function (e) {
     // prevents the page from reloading
     e.preventDefault();
 
-    // This is our API key
-    let APIKey = "9e86fc9e3bf21c56f84b81c96613709c";
-    // this is the city we are currently searching
-    cityName = $('#cityInputValue').val() || 'Monterrey,NuevoLeon'
+    // this is the value that is typed in by the user 
+    let value = $('#cityInputValue').val()
 
+    if (value === '') {
+        // if the input is not value the don't run the request 
+        return
+    } else {
+        requestAjax(value);
+    }
+
+});
+
+
+// this function will do a GET request and populate the dashboard
+function requestAjax(cityName) {
 
     // this is target URL
     let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + APIKey;
@@ -39,7 +51,10 @@ $('#searchCity').on('click', function (e) {
         // console.log(lon);
 
         // prependding search entry to history 
-        $('.searchHistory').prepend(`<a class="list-group-item list-group-item-action callbackThisTown">${cityName}</a>`);
+        // it will not append if the city has been searched before
+        // if(cityName)
+        // ************CITY APPEND WAS HERE
+        prependCity(cityName);
 
         // Current days info
         //********************************************** */
@@ -119,43 +134,68 @@ $('#searchCity').on('click', function (e) {
         }
         //********************************************** */
 
+        //comments 
+        {
+            // search input and history
+            //********************************************** */
+            // event prevent default
+            // input search box
+            // save to local data 
+            //********************************************** */
 
-        // search input and history
-        //********************************************** */
-        // event prevent default
-        // input search box
-        // save to local data 
-        //********************************************** */
 
+            //EXTRAS*** set up a running clock for each local time 
+            //EXTRAS*** set up POST
+            //EXTRAS*** make the asthetic of the API better 
+            //EXTRAS*** set up UV forecast for all week using the forecast Uv API
+            //EXTRAS*** use bootswatch to find a cool UI for the weather dashboard
+            //************************************************************************************ */
+            //************************************************************************************ */
+            // current day, month, day, year, time time running the seconds
+            // lets try to make the clock change to display local time of the place that is searched
+            // $("#currentDay").text(moment().format("MMMM Do YYYY hh:mm:ss A"));
 
-        //EXTRAS*** set up a running clock for each local time 
-        //EXTRAS*** set up POST
-        //EXTRAS*** make the asthetic of the API better 
-        //EXTRAS*** set up UV forecast for all week using the forecast Uv API
-        //EXTRAS*** use bootswatch to find a cool UI for the weather dashboard
-        //************************************************************************************ */
-        //************************************************************************************ */
-        // current day, month, day, year, time time running the seconds
-        // lets try to make the clock change to display local time of the place that is searched
-        // $("#currentDay").text(moment().format("MMMM Do YYYY hh:mm:ss A"));
-
-        // setInterval(function () {
-        //     $("#currentDay").text(moment().format("MMMM Do YYYY hh:mm:ss A"));
-        // }, 1000);
-        //************************************************************************************ */
-
+            // setInterval(function () {
+            //     $("#currentDay").text(moment().format("MMMM Do YYYY hh:mm:ss A"));
+            // }, 1000);
+            //************************************************************************************ */
+        }
     });
 
 
+
+}
+
+
+// this is mapped the the search history buttons 
+// when we click on any of the buttons we run a request for that city again
+$('.searchHistory').on('click', function (e) {
+    let userSelection = $(e.target).text();  //e.target.innerText;
+
+    // to see the user input value test  
+    // console.log(userSelection);
+
+    // sends request to our requestAjax function
+    requestAjax(userSelection);
+
 });
 
 
-$('.searchHistory').on('click', function(e){
-    // $(this).
 
-    // function that runs the request ajax
-});
+// this function prepends a history selection
+function prependCity(cityName) {
 
+    // have some way of not prepend things that have already been prepended
+
+    // if(cityName === )
+
+
+
+    // prependding search entry to history 
+    // it will not append if the city has been searched before
+    // if(cityName)
+    $('.searchHistory').prepend(`<a class="list-group-item list-group-item-action callbackThisTown">${cityName}</a>`);
+}
 
 
 
