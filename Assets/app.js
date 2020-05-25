@@ -35,9 +35,40 @@ $.ajax({
         method: "GET"
     }).then(function (response) {
 
+        // this is the current Uv value 
+        let curntUv = response.value;
+        
+
         // we want to provide the uv index data here
         console.log('this is the uv index data');
-        console.log(response);
+        console.log(curntUv);
+
+        if (curntUv < 3){
+            //color turn green 
+            $('.uvIndex').addClass('bg-success');
+            $('.uvIndex').text(`${curntUv}` );
+            $('.uvStatusMsg').text(' LOW');
+        }else if (curntUv <= 6){
+            // color turns yellow 
+            $('.uvIndex').addClass('bg-warning');
+            $('.uvIndex').text(`${curntUv}`);
+            $('.uvStatusMsg').text(' MODERATE');
+        }else if (curntUv <= 8){
+            // color turns orange 
+            $('.uvIndex').addClass('bg-orange');
+            $('.uvIndex').text(`${curntUv}`);
+            $('.uvStatusMsg').text(' HIGH');
+        }else if (curntUv < 11){
+            // color turns red 
+            $('.uvIndex').addClass('bg-danger');
+            $('.uvIndex').text(`${curntUv}`);
+            $('.uvStatusMsg').text(' VERY HIGH');
+        }else if (curntUv >= 11){
+            // color turns purple 
+            $('.uvIndex').addClass('bg-extremePurple');
+            $('.uvIndex').text(`${curntUv}`);
+            $('.uvStatusMsg').text(' EXTREME');
+        }
 
 
     });
@@ -91,6 +122,7 @@ $.ajax({
 
     //EXTRAS*** set up a running clock for each local time 
     //EXTRAS*** set up POST
+    //EXTRAS*** make the asthetic of the API better 
     //EXTRAS*** set up UV forecast for all week using the forecast Uv API
     //************************************************************************************ */
     //************************************************************************************ */

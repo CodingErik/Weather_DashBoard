@@ -4,3 +4,10 @@
     box-sizing: border-box;
 }
 
+.bg-orange {
+    background-color: orange;
+}
+
+.bg-extremePurple {
+    background-color: purple;
+}
