@@ -22,25 +22,23 @@
 
     <div class="container-fluid">
         <div class="row">
-            <!-- SEARCH BAR AND HISTORY -->
+            <!-- SEARCH BAR-->
             <div class="col-12 col-lg-3 mt-3">
                 <div class="row">
-                    <!-- search bar -->
+                    <!-- SEARCH BAR -->
                     <div class="col-12">
                         <h4>Search For a City:</h4>
                         <div class="input-group input-group-lg">
-                            <input class="form-control mr-sm-2 input-group-lg" type="search" placeholder="City..."
-                                aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" id="searchCity"
+                            <input class="form-control mr-sm-2 input-group-lg" id="cityInputValue"
+                                type="search" placeholder="City..." aria-label="Search">
+                            <button class="btn btn-outline-info my-2 my-sm-0" id="searchCity"
                                 type="submit">Search</button>
                         </div>
                     </div>
-                    <!-- searched cities -->
+                    <!-- searched cities HISTORY -->
                     <div class="col-12 mt-3">
-                        <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                            <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-                            <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                        <div class="list-group searchHistory">
+                            
                             <!-- <a href="#" class="list-group-item list-group-item-action disabled active" tabindex="-1" aria-disabled="true">Vestibulum at eros</a> -->
                         </div>
                     </div>
@@ -53,11 +51,13 @@
                     <div class="col-12">
                         <div class="jumbotron jumbotron-fluid py-4 px-4 font-weight-bold">
                             <div class="container"></div>
-                            <h1 class="display-4"><span class="city"></span> (<span class="day0"></span>) <span class="icon0"></span></h1>
+                            <h1 class="display-4"><span class="city"></span> (<span class="day0"></span>) <img
+                                    class="icon0"></h1>
                             <div class="mt-3">Wind Speeds : <span class="wind"></span> MPH</div>
                             <div class="mt-3">Humidity : <span class="humidity0"></span>%</div>
                             <div class="mt-3">Temperature : <span class="temp0"></span> ºF</div>
-                            <div class="mt-3">UV Index : <div class="uvIndex rounded d-inline p-2 text-light"></div><span class="uvStatusMsg" ></span></div>
+                            <div class="mt-3">UV Index : <div class="uvIndex rounded d-inline p-2 text-light"></div>
+                                <span class="uvStatusMsg"></span></div>
                             <!-- <div class="mt-3 sunrise"></div> -->
                         </div>
                     </div>
@@ -69,28 +69,28 @@
                         <div class="col-3 bg-primary border border-white p-2">
                             <div>(<span class="day1"></span>)</div>
                             <!-- this is where the icon will go  -->
-                            <div class="mt-2 icon1"></div>
+                            <img class="mt-2 icon1">
                             <div class="mt-2">Temperature : <span class="temp1"></span>ºF</div>
                             <div class="mt-2">Humidity :<span class="humidity1"></span>%</div>
                         </div>
                         <div class="col-3 bg-primary border border-white p-2">
                             <div>(<span class="day2"></span>)</div>
                             <!-- this is where the icon will go  -->
-                            <div class="mt-2 icon2"></div>
+                            <img class="mt-2 icon2">
                             <div class="mt-2">Temperature : <span class="temp2"></span>ºF</div>
                             <div class="mt-2">Humidity :<span class="humidity2"></span>%</div>
                         </div>
                         <div class="col-3 bg-primary border border-white p-2">
                             <div>(<span class="day3"></span>)</div>
                             <!-- this is where the icon will go  -->
-                            <div class="mt-2 icon3"></div>
+                            <img class="mt-2 icon3">
                             <div class="mt-2">Temperature : <span class="temp3"></span>ºF</div>
                             <div class="mt-2">Humidity :<span class="humidity3"></span>%</div>
                         </div>
                         <div class="col-3 bg-primary border border-white p-2">
                             <div>(<span class="day4"></span>)</div>
                             <!-- this is where the icon will go  -->
-                            <div class="mt-2 icon4"></div>
+                            <img class="mt-2 icon4">
                             <div class="mt-2">Temperature : <span class="temp4"></span>ºF</div>
                             <div class="mt-2">Humidity :<span class="humidity4"></span>%</div>
                         </div>
