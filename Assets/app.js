@@ -269,18 +269,6 @@ function getLastOrDefault() {
 //********************************************** */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 //comments 
 {
     // search input and history
@@ -308,15 +296,4 @@ function getLastOrDefault() {
     // }, 1000);
     //************************************************************************************ */
 }
-
-
-
-// when we refresh it no longer populates the old data in the search history append 
-// it's already in the array & local storage so it not re appending it 
-// we need to find a way to repopulate the names that are already in the array 
-// the saved names *KEY
-
-
-
-// is make function that send the 
 
