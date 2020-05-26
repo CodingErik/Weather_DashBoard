@@ -1,6 +1,0 @@
-
-// weather API
-https://openweathermap.org/weather-conditions
-
-// weather icons
-https://www.amcharts.com/free-animated-svg-weather-icons/
