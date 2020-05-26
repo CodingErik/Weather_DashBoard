@@ -123,7 +123,9 @@ function requestAjax(cityName) {
             let iconUrl = 'http://openweathermap.org/img/wn/';
             //  individual Icon for each days forecast
             let weatherIcon = iconUrl + response.list[i].weather[0].icon + '.png';
+            let weatherDescription = response.list[i].weather[0].description;
 
+            console.log(weatherDescription)
             // calculating conversion from Kelvin to Farenheit
             let K = response.list[i].main.temp;
             let F = (K - 273.15) * 1.80 + 32;
@@ -136,6 +138,9 @@ function requestAjax(cityName) {
 
             // this is the icon for the each day forecast Appended to the html
             $('.icon' + i).attr('src', weatherIcon);
+
+            // this is the description for the weather Icon 
+            $('.description' + i).text(weatherDescription);
 
             // setting the current date for the jumbotron display
             $('.day' + i).text(moment().add(i, 'days').format('M/DD/YY'));
@@ -201,10 +206,10 @@ function prependCity(cityName) {
     // this for loop iterates through out values to makes sure that we don't append something
     // that has already been appended
     for (let i = 0; i < historyArr.length; i++) {
+        // if the city name is already in the array 
+        // then we don't need prepended again
         if (cityName === historyArr[i]) {
-            // we return because the item is already in the list and does not need to be 
-            // prepended again
-            return
+            return;
         }
     }
 
