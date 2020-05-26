@@ -50,7 +50,7 @@ $('#clearHistoryBtn').on('click', function (e) {
     e.preventDefault();
 
     // empties the searchHistory div 
-    $('.searchHistory')
+    $('.searchHistory').empty();
 
 });
 //********************************************** */
@@ -93,7 +93,7 @@ function requestAjax(cityName) {
 
 
         // we need to find a way to repopulate the names that are already in the array 
-        // saved
+        // saved *KEY
 
 
         // persist history searches
