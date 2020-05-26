@@ -13,12 +13,16 @@ let cityName = 'Monterrey,NuevoLeon';
 // array to keep track of history values  
 let historyArr = []
 
-
+// calls the persisted seach History 
+persistSearchData();
 
 // This is a default request to the API to get the user started with an example
 requestAjax(cityName);
 
-// this is the search button
+
+// SEARCH BUTTON
+// calls the request function with the user input value 
+//********************************************** */
 $('#searchCity').on('click', function (e) {
     // prevents the page from reloading
     e.preventDefault();
@@ -34,9 +38,29 @@ $('#searchCity').on('click', function (e) {
     }
 
 });
+//********************************************** */
 
 
+
+// ClEAR HISTORY BUTTON
+// calls the request function with the user input value 
+//********************************************** */
+$('#clearHistoryBtn').on('click', function (e) {
+    // prevents the page from reloading
+    e.preventDefault();
+
+    // empties the searchHistory div 
+    $('.searchHistory')
+
+});
+//********************************************** */
+
+
+
+
+// GET REQUEST FUNCTION
 // this function will do a GET request and populate the dashboard
+//********************************************** */
 function requestAjax(cityName) {
 
     // this is target URL
@@ -55,14 +79,25 @@ function requestAjax(cityName) {
         // console.log(lon);
 
 
-        //CITY APPEND WAS HERE ************ ************ ************
+        //CITY APPEND ************ ************ ************
         // prependding search entry to history 
         // it will not append if the city has been searched before
+        // pushing it to the historyArr
         prependCity(cityName);
         //********************************************** */
 
+        
+        // when we refresh it no longer populates the old one since 
+        // it's already in the array 
+        // its not reloading it because the name is already in the array 
 
 
+        // we need to find a way to repopulate the names that are already in the array 
+        // saved
+
+
+        // persist history searches
+        localStorage.setItem('historyArr', JSON.stringify(historyArr));
 
 
 
@@ -125,7 +160,9 @@ function requestAjax(cityName) {
             let weatherIcon = iconUrl + response.list[i].weather[0].icon + '.png';
             let weatherDescription = response.list[i].weather[0].description;
 
-            console.log(weatherDescription)
+            // used to test the weather icons
+            // console.log(weatherDescription)
+
             // calculating conversion from Kelvin to Farenheit
             let K = response.list[i].main.temp;
             let F = (K - 273.15) * 1.80 + 32;
@@ -180,8 +217,12 @@ function requestAjax(cityName) {
 
 
 }
+//********************************************** */
 
 
+
+//SEARCH HISTORY CLICKS REQUEST'S
+//********************************************** */
 // this is mapped to the search history buttons 
 // when we click on any of the buttons we run a request for that city again
 $('.searchHistory').on('click', function (e) {
@@ -194,10 +235,13 @@ $('.searchHistory').on('click', function (e) {
     requestAjax(historySelection);
 
 });
+//********************************************** */
 
 
 
-// this function prepends a history selection
+// PREPEND FUNCTION
+//********************************************** */
+// this function prepends history selection // avoid duplicates
 function prependCity(cityName) {
 
     // DONE
@@ -219,9 +263,37 @@ function prependCity(cityName) {
     // ${i}
     $('.searchHistory').prepend(`<a class="list-group-item list-group-item-action callbackThisTown">${cityName}</a>`);
 
+    // pushed the new city input into the  historyArr 
     historyArr.push(cityName);
-}
 
+}
+//********************************************** */
+
+
+
+// DELETE HISTORY FUNCTION
+//********************************************** */
+// This function deletes our history  
+function deleteHistory() {
+    localStorage.clear()
+
+    // we need to empty appended list 
+}
+//********************************************** */
+
+
+
+// PERSISTED DATA
+//********************************************** */
+function persistSearchData() {
+    let list = JSON.parse(localStorage.getItem('historyArr'));
+    if (list !== null) {
+        historyArr = list;
+    } else {
+        return list;
+    }
+};
+//********************************************** */
 
 
 
