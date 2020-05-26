@@ -1,4 +1,4 @@
-# 06 Server-Side APIs: Weather Dashboard
+# 06 Weather Dashboard
 
 This is a weather dashboard application. You can see a five day forecast for any city of your choice.
 Simply type in the city you want in the search bar. This application is powered by the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities.
@@ -39,4 +39,5 @@ The following image demonstrates the application functionality:
 
 ## Links
 
-> You can view the application here https://codingerik.github.io/Weather_DashBoard/
+> You can view the application here: https://codingerik.github.io/Weather_DashBoard/
+> Repo: https://github.com/CodingErik/Weather_DashBoard
