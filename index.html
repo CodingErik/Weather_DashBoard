@@ -5,8 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="Assets/bootstrap.min (1).css">
     <link rel="stylesheet" href="Assets/style.css">
+    
 </head>
 
 <body>
@@ -21,10 +26,10 @@
         <div class="row">
             <!-- SEARCH BAR-->
             <div class="col-12 col-lg-3 mt-3">
-                <div class="row">
+                <div class="row ">
                     <!-- SEARCH INPUT -->
                     <div class="col-12">
-                        <h4>Search For a City:</h4>
+                        <h4 class="font-weight-bold">Search For a City:</h4>
                         <div class="input-group input-group-lg ">
                             <input class="form-control  input-group-lg border border-primary" id="cityInputValue"
                                 type="search" placeholder="Type City Here..." aria-label="Search">
@@ -32,12 +37,12 @@
                     </div>
                     <div class="col-4 mt-2">
                         <!-- CLEAR HISTORY BUTTON  -->
-                        <button class="btn btn-lg btn-block btn-outline-primary my-2 my-sm-0" id="clearHistoryBtn"
+                        <button class="btn btn-lg btn-block btn-danger my-2 my-sm-0" id="clearHistoryBtn"
                             type="submit">Clear</button>
                     </div>
                     <div class="col-8 mt-2">
                         <!-- SEARCH BUTTON  -->
-                        <button class="btn btn-lg btn-block btn-outline-primary my-2 my-sm-0 px-5" id="searchCity"
+                        <button class="btn btn-lg btn-block btn-danger my-2 my-sm-0 px-5" id="searchCity"
                             type="submit">Search</button>
                     </div>
                     <!-- searched cities HISTORY -->
@@ -76,8 +81,9 @@
                             <div class="cards display-4">(<span class="day1"></span>)</div>
                             <!-- this is where the icon will go  -->
                             <div><img alt="weather icon, check description for details" src="#"
-                                    class="img-fluid mt-2 icon1"><span class="description1"></span></div>
-                            <div class="mt-2">Temperature : <span class="temp1"></span> &deg;F</div>
+                                    class="img-fluid mt-2 icon1"></div>
+                                    <div><span class="description1 descriptionWeight "></span></div>
+                            <div class="mt-2">Temperature: <span class="temp1"></span>&deg;F</div>
                             <div class="mt-2">Humidity : <span class="humidity1"></span>%</div>
                         </div>
                         <div
@@ -85,8 +91,9 @@
                             <div class="cards display-4">(<span class="day2"></span>)</div>
                             <!-- this is where the icon will go  -->
                             <div><img alt="weather icon, check description for details" src="#"
-                                    class="img-fluid mt-2 icon2"><span class="description2"></span></div>
-                            <div class="mt-2">Temperature : <span class="temp2"></span> &deg;F</div>
+                                    class="img-fluid mt-2 icon2"></div>
+                                    <div><span class="description2 descriptionWeight "></span></div>
+                            <div class="mt-2">Temperature: <span class="temp2"></span>&deg;F</div>
                             <div class="mt-2">Humidity : <span class="humidity2"></span>%</div>
                         </div>
                         <div
@@ -94,8 +101,9 @@
                             <div class="cards display-4">(<span class="day3"></span>)</div>
                             <!-- this is where the icon will go  -->
                             <div><img alt="weather icon, check description for details" src="#"
-                                    class="img-fluid mt-2 icon3"><span class="description3"></span></div>
-                            <div class="mt-2">Temperature : <span class="temp3"></span> &deg;F</div>
+                                    class="img-fluid mt-2 icon3"></div>
+                                    <div><span class="description3 descriptionWeight "></span></div>
+                            <div class="mt-2">Temperature: <span class="temp3"></span>&deg;F</div>
                             <div class="mt-2">Humidity : <span class="humidity3"></span>%</div>
                         </div>
                         <div
@@ -103,8 +111,9 @@
                             <div class="cards display-4">(<span class="day4"></span>)</div>
                             <!-- this is where the icon will go  -->
                             <div><img alt="weather icon, check description for details" src="#"
-                                    class="img-fluid mt-2 icon4"><span class="description4"></span></div>
-                            <div class="mt-2">Temperature : <span class="temp4"></span> &deg;F</div>
+                                    class="img-fluid mt-2 icon4"></div>
+                                    <div><span class="description4 descriptionWeight "></span></div>
+                            <div class="mt-2">Temperature: <span class="temp4"></span>&deg;F</div>
                             <div class="mt-2">Humidity : <span class="humidity4"></span>%</div>
                         </div>
                         <div
@@ -112,8 +121,9 @@
                             <div class="cards display-4">(<span class="day5"></span>)</div>
                             <!-- this is where the icon will go  -->
                             <div><img alt="weather icon, check description for details" src="#"
-                                    class="img-fluid mt-2 icon5"><span class="description5"></span></div>
-                            <div class="mt-2">Temperature : <span class="temp5"></span> &deg;F</div>
+                                    class="img-fluid mt-2 icon5"></div>
+                                    <div><span class="description5 descriptionWeight "></span></div>
+                            <div class="mt-2">Temperature: <span class="temp5"></span>&deg;F</div>
                             <div class="mt-2">Humidity : <span class="humidity5"></span>%</div>
                         </div>
                     </div>

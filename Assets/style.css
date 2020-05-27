@@ -2,6 +2,8 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    /* font-family: 'Source Sans Pro', sans-serif; */
+    font-family: 'Lato', sans-serif;
 }
 
 .bg-orange {
@@ -11,11 +13,21 @@
 .bg-extremePurple {
     background-color: purple;
 }
+.bg-green {
+    background-color:rgb(141, 196, 67);
+}
+.bg-red {
+    background-color:rgb(211, 72, 87);
+}
+.bg-yellow {
+    background-color: rgb(253, 216, 53);
+}
 
 
 body {
     min-height: 400px;
     margin-bottom: 400px;
-
+    background-color: silver;
 }
+
 

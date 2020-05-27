@@ -15,6 +15,9 @@ $('#searchCity').on('click', function (e) {
     // prevents the page from reloading
     e.preventDefault();
 
+    // testing functionality 
+    // console.log('working?');
+
     // this is the value that is typed in by the user 
     let value = $('#cityInputValue').val()
 
@@ -65,7 +68,21 @@ function requestAjax(cityName) {
         // console.log(lat);
         // console.log(lon);
 
-        console.log('this is the wrong one', response);
+
+        /// TIME TESTING 
+        // console.log(response);
+        // console.log(moment.unix(response.list[0].dt).local().hours());
+
+        
+
+        // let utcTime = moment.unix(response.list[0].dt).utc().format('YYYY-MM-DD HH:mm:ss');
+
+
+        // var stillUtc = moment.utc(utcTime).toDate();
+        // var local = moment(stillUtc).local().format('YYYY-MM-DD HH:mm:ss');
+
+        // console.log(local); // 2015-09-13 09:39:27
+
 
 
         //CITY APPEND ************ ************ ************
@@ -108,12 +125,12 @@ function requestAjax(cityName) {
 
             if (curntUv < 3) {
                 //color turn green 
-                $('.uvIndex').addClass('bg-success');
+                $('.uvIndex').addClass('bg-green');
                 $('.uvIndex').text(`${curntUv}`);
                 $('.uvStatusMsg').text(' LOW');
             } else if (curntUv <= 6) {
                 // color turns yellow 
-                $('.uvIndex').addClass('bg-warning');
+                $('.uvIndex').addClass('bg-yellow');
                 $('.uvIndex').text(`${curntUv}`);
                 $('.uvStatusMsg').text(' MODERATE');
             } else if (curntUv <= 8) {
@@ -123,7 +140,7 @@ function requestAjax(cityName) {
                 $('.uvStatusMsg').text(' HIGH');
             } else if (curntUv < 11) {
                 // color turns red 
-                $('.uvIndex').addClass('bg-danger');
+                $('.uvIndex').addClass('bg-red');
                 $('.uvIndex').text(`${curntUv}`);
                 $('.uvStatusMsg').text(' VERY HIGH');
             } else if (curntUv >= 11) {
@@ -191,9 +208,6 @@ function requestAjax(cityName) {
 //********************************************** */
 
 
-
-
-
 //SEARCH HISTORY CLICKS REQUEST'S
 //********************************************** */
 // this is mapped to the search history buttons 
@@ -253,7 +267,7 @@ function pushToHistoryArr(city) {
 function prepend(cityName) {
     // this function prepends history selection 
     // prependding search entry to history div              
-    $('.searchHistory').prepend(`<a class="list-group-item list-group-item-action callbackThisTown  list-group-item-primary text-primary ">${cityName}</a>`);
+    $('.searchHistory').prepend(`<a class="list-group-item list-group-item-action callbackThisTown list-group-item-primary text-primary ">${cityName}</a>`);
 }
 //********************************************** */
 
@@ -295,19 +309,14 @@ function getLastOrDefault() {
 
 //comments 
 {
-    // search input and history
-    //********************************************** */
-    // event prevent default
-    // input search box
-    // save to local data 
-    //********************************************** */
 
 
+    // fonts
     //EXTRAS*** set up a running clock for each local time 
     //EXTRAS*** set up POST
-    //EXTRAS*** make the asthetic of the API better 
+    //EXTRAS*** make the asthetic of the API better     [DONE]
     //EXTRAS*** set up UV forecast for all week using the forecast Uv API
-    //EXTRAS*** use bootswatch to find a cool UI for the weather dashboard
+    //EXTRAS*** use bootswatch to find a cool UI for the weather dashboard  [DONE]
     //EXTRAS*** add chance of precipitation
     //************************************************************************************ */
     //************************************************************************************ */
