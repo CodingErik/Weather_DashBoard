@@ -149,44 +149,6 @@ function requestAjax(cityName) {
             // used to test the weather icons
             // console.log(weatherDescription)
 
-
-
-
-            // depending on the time the ajax will pull different array data from the API
-            // if it's 
-
-            // the first forecast needs to be the one for today not tomorrow 
-            // we need to figure out a way to get the forecast according to the time of the day
-            // somehow use moment to add i + so depending on the time so we can get the right forecast for the time
-
-
-            // this is going throught the whole array and just giving us the dates
-            // of all the indexes in the list  
-            let reponseListDates = response.list[i].dt_txt.split(" ")[0];
-            let reponseListHours = response.list[i].dt_txt.split(" ")[1]
-
-
-            // console.log('reponselistDates', reponseListDates);
-            // console.log('reponseListHours', reponseListHours);
-
-            // this is the current day and then +1 each iteration
-            let currentDayPlusOne = moment().add(1, 'days').format("YYYY-MM-DD");
-            let hourToMatch = moment('12').format("hh:mm:ss");
-
-
-
-
-
-            // this is what out list has to match in order to display a time 
-            // console.log('currentDayPlusOne', currentDayPlusOne);
-            // console.log('hourToMatch', hourToMatch);
-
-            
-
-            if(response.list[i].dt_txt.indexOf("21:00:00") !== -1){
-                console.log(reponseListDates);
-            }
-
             // calculating conversion from Kelvin to Farenheit
             let K = response.list[i].main.temp;
             let F = (K - 273.15) * 1.80 + 32;
