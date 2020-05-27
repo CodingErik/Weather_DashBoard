@@ -39,6 +39,45 @@ $('#clearHistoryBtn').on('click', function (e) {
 });
 //********************************************** */
 
+
+// this gets the current weather for today [CORRECT]
+// let APIKey = "9e86fc9e3bf21c56f84b81c96613709c";
+
+// let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=dallas&appid=" + APIKey;
+
+// $.ajax({
+//     url: queryURL,
+//     method: 'GET'
+// }).then((response) => {
+//     console.log('this is the current weather', response);
+
+
+//     // Current days info
+//     //********************************************** */
+//     // city name 
+//     $(".city").text(response.name);
+//     // wind speed in converted from meters/seconds to MPH 
+//     $(".wind").text((response.wind.speed * 2.23694).toFixed(1));
+//     // humidity for current day 
+//     $(".humidity").text(response.main.humidity);
+//     // Current Uv Value is in the CURRENT DAY UV INDEX AJAX CALL
+
+
+//     // calculating conversion from Kelvin to Farenheit
+//     let K = response.main.temp;
+//     let F = (K - 273.15) * 1.80 + 32;
+//     // temp converted to ºF for current Day
+//     $(".temp").text(F.toFixed(0));
+
+
+// })
+
+
+// the first forecast needs to be the one for today not tomorrow 
+// we need to figure out a way to get the forecast according to the time of the day
+// somehow use moment to add i + so depending on the time so we can get the right forecast for the time
+
+
 // GET REQUEST FUNCTION
 // this function will do a GET request and populate the dashboard
 //********************************************** */
@@ -46,7 +85,7 @@ function requestAjax(cityName) {
 
     // This is our API key
     let APIKey = "9e86fc9e3bf21c56f84b81c96613709c";
-    
+
     // this is target URL
     let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + APIKey;
 
@@ -62,6 +101,8 @@ function requestAjax(cityName) {
         // console.log(lat);
         // console.log(lon);
 
+        console.log('this is the wrong one', response);
+
 
         //CITY APPEND ************ ************ ************
         // prependding search entry to history 
@@ -76,20 +117,25 @@ function requestAjax(cityName) {
 
 
 
+
         // Current days info
         //********************************************** */
         // city name 
         $(".city").text(response.city.name);
-        // wind speed in MPH 
-        $(".wind").text(response.list[0].wind.speed);
+        // wind speed in converted from meters/seconds to MPH 
+        $(".wind").text((response.list[0].wind.speed * 2.23694).toFixed(1));
 
-        //getting the current day UV index
+
+
+        //getting the CURRENT DAY UV INDEX
+        //********************************************** */
+        //********************************************** */
         $.ajax({
             url: `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${APIKey}`,
             method: "GET"
         }).then(function (response) {
 
-            // this is the current Uv value 
+            // this is the current Day Uv value 
             let curntUv = response.value;
 
             // // this is the current Uv index data just for testing
@@ -125,18 +171,25 @@ function requestAjax(cityName) {
 
         });
         //********************************************** */
+        //********************************************** */
+
 
         // WEATHER FORECAST FOR EACH DAY 
         //********************************************** */
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 6; i++) {
             // icon URL
             let iconUrl = 'http://openweathermap.org/img/wn/';
             //  individual Icon for each days forecast
-            let weatherIcon = iconUrl + response.list[i].weather[0].icon + '.png';
+            let weatherIcon = iconUrl + response.list[i].weather[0].icon + '@2x.png';
             let weatherDescription = response.list[i].weather[0].description;
 
             // used to test the weather icons
             // console.log(weatherDescription)
+
+
+            // depending on the time the ajax will pull different array data from the API
+            // if it's 
+
 
             // calculating conversion from Kelvin to Farenheit
             let K = response.list[i].main.temp;
@@ -146,7 +199,7 @@ function requestAjax(cityName) {
             $(".humidity" + i).text(response.list[i].main.humidity);
 
             // temp converted to ºF for all the dates
-            $(".temp" + i).text(F.toFixed(1));
+            $(".temp" + i).text(F.toFixed(0));
 
             // this is the icon for the each day forecast Appended to the html
             $('.icon' + i).attr('src', weatherIcon);
@@ -154,7 +207,7 @@ function requestAjax(cityName) {
             // this is the description for the weather Icon 
             $('.description' + i).text(weatherDescription);
 
-            // setting the current date for the jumbotron display
+            // [DAYS] setting the current date for the jumbotron display
             $('.day' + i).text(moment().add(i, 'days').format('M/DD/YY'));
 
             // $('.sunrise').text(moment.unix(response.sys.sunrise).format('llll'));
@@ -168,6 +221,9 @@ function requestAjax(cityName) {
 
 }
 //********************************************** */
+
+
+
 
 
 //SEARCH HISTORY CLICKS REQUEST'S
@@ -228,8 +284,8 @@ function pushToHistoryArr(city) {
 //********************************************** */
 function prepend(cityName) {
     // this function prepends history selection 
-    // prependding search entry to history div
-    $('.searchHistory').prepend(`<a class="list-group-item list-group-item-action callbackThisTown">${cityName}</a>`);
+    // prependding search entry to history div              
+    $('.searchHistory').prepend(`<a class="list-group-item list-group-item-action callbackThisTown  list-group-item-primary text-primary ">${cityName}</a>`);
 }
 //********************************************** */
 
