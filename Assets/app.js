@@ -57,6 +57,9 @@ function requestAjax(cityName) {
     // this is target URL
     let queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + APIKey;
 
+
+    // CALLS WEATHER 5-FORECAST FOR EACH DAY  
+    //********************************************** */
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -64,26 +67,6 @@ function requestAjax(cityName) {
         // coordinates of current city 
         let lat = response.city.coord.lat;
         let lon = response.city.coord.lon;
-
-        // for testing pusporses
-        // console.log(lat);
-        // console.log(lon);
-
-
-        /// TIME TESTING 
-        // console.log(response);
-        // console.log(moment.unix(response.list[0].dt).local().hours());
-
-
-
-        // let utcTime = moment.unix(response.list[0].dt).utc().format('YYYY-MM-DD HH:mm:ss');
-
-
-        // var stillUtc = moment.utc(utcTime).toDate();
-        // var local = moment(stillUtc).local().format('YYYY-MM-DD HH:mm:ss');
-
-        // console.log(local); // 2015-09-13 09:39:27
-
 
 
         //CITY APPEND ************ ************ ************
@@ -97,20 +80,18 @@ function requestAjax(cityName) {
         // persist the last city search
         localStorage.setItem('lastCity', cityName);
 
-
-
-
         // Current days info
         //********************************************** */
         // city name 
         $(".city").text(response.city.name);
         // wind speed in converted from meters/seconds to MPH 
         $(".wind").text((response.list[0].wind.speed * 2.23694).toFixed(1));
+        //********************************************** */
 
+        
 
 
         //getting the [CURRENT DAY UV INDEX]
-        //********************************************** */
         //********************************************** */
         $.ajax({
             url: `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${APIKey}`,
@@ -153,12 +134,12 @@ function requestAjax(cityName) {
 
         });
         //********************************************** */
-        //********************************************** */
 
+        console.log(response);
 
-        // WEATHER 5-FORECAST FOR EACH DAY 
+        // RENDERING WEATHER 5-FORECAST FOR EACH DAY  
         //********************************************** */
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < response.list.length; i++) {
             // icon URL
             let iconUrl = 'http://openweathermap.org/img/wn/';
             //  individual Icon for each days forecast
@@ -169,6 +150,8 @@ function requestAjax(cityName) {
             // console.log(weatherDescription)
 
 
+
+
             // depending on the time the ajax will pull different array data from the API
             // if it's 
 
@@ -176,6 +159,33 @@ function requestAjax(cityName) {
             // we need to figure out a way to get the forecast according to the time of the day
             // somehow use moment to add i + so depending on the time so we can get the right forecast for the time
 
+
+            // this is going throught the whole array and just giving us the dates
+            // of all the indexes in the list  
+            let reponseListDates = response.list[i].dt_txt.split(" ")[0];
+            let reponseListHours = response.list[i].dt_txt.split(" ")[1]
+
+
+            // console.log('reponselistDates', reponseListDates);
+            // console.log('reponseListHours', reponseListHours);
+
+            // this is the current day and then +1 each iteration
+            let currentDayPlusOne = moment().add(1, 'days').format("YYYY-MM-DD");
+            let hourToMatch = moment('12').format("hh:mm:ss");
+
+
+
+
+
+            // this is what out list has to match in order to display a time 
+            // console.log('currentDayPlusOne', currentDayPlusOne);
+            // console.log('hourToMatch', hourToMatch);
+
+            
+
+            if(response.list[i].dt_txt.indexOf("21:00:00") !== -1){
+                console.log(reponseListDates);
+            }
 
             // calculating conversion from Kelvin to Farenheit
             let K = response.list[i].main.temp;
