@@ -3,7 +3,13 @@
 This is a weather dashboard application. You can see a five day forecast for any city of your choice.
 Simply type in the city you want in the search bar. This application is powered by the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities.
 
-## User Story
+The following image demonstrates the application functionality:
+
+![weather dashboard demo](./Assets/06-server-side-apis-homework-demo.png)
+
+## Client Scope
+
+>User Story
 
 ```
 AS A traveler
@@ -11,7 +17,7 @@ I WANT to see the weather outlook for multiple cities
 SO THAT I can plan a trip accordingly
 ```
 
-## Acceptance Criteria
+> Acceptance Criteria
 
 ```
 GIVEN a weather dashboard with form inputs   
@@ -28,10 +34,10 @@ THEN I am again presented with current and future conditions for that city
 WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast
 ```
+## UV index
 
-The following image demonstrates the application functionality:
-
-![weather dashboard demo](./Assets/06-server-side-apis-homework-demo.png)
+> this project follows the UV Index Scale
+> for more info on this scale visit the gov site @ https://www.epa.gov/sunsafety/uv-index-scale-0
 
 ## Contributors
 
