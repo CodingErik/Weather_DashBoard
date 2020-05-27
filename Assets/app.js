@@ -6,6 +6,8 @@ let historyArr = []
 // or request a default
 getLastOrDefault();
 
+
+
 // SEARCH BUTTON
 // calls the request function with the user input value 
 //********************************************** */
@@ -38,44 +40,6 @@ $('#clearHistoryBtn').on('click', function (e) {
 
 });
 //********************************************** */
-
-
-// this gets the current weather for today [CORRECT]
-// let APIKey = "9e86fc9e3bf21c56f84b81c96613709c";
-
-// let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=dallas&appid=" + APIKey;
-
-// $.ajax({
-//     url: queryURL,
-//     method: 'GET'
-// }).then((response) => {
-//     console.log('this is the current weather', response);
-
-
-//     // Current days info
-//     //********************************************** */
-//     // city name 
-//     $(".city").text(response.name);
-//     // wind speed in converted from meters/seconds to MPH 
-//     $(".wind").text((response.wind.speed * 2.23694).toFixed(1));
-//     // humidity for current day 
-//     $(".humidity").text(response.main.humidity);
-//     // Current Uv Value is in the CURRENT DAY UV INDEX AJAX CALL
-
-
-//     // calculating conversion from Kelvin to Farenheit
-//     let K = response.main.temp;
-//     let F = (K - 273.15) * 1.80 + 32;
-//     // temp converted to ºF for current Day
-//     $(".temp").text(F.toFixed(0));
-
-
-// })
-
-
-// the first forecast needs to be the one for today not tomorrow 
-// we need to figure out a way to get the forecast according to the time of the day
-// somehow use moment to add i + so depending on the time so we can get the right forecast for the time
 
 
 // GET REQUEST FUNCTION
@@ -127,7 +91,7 @@ function requestAjax(cityName) {
 
 
 
-        //getting the CURRENT DAY UV INDEX
+        //getting the [CURRENT DAY UV INDEX]
         //********************************************** */
         //********************************************** */
         $.ajax({
@@ -174,7 +138,7 @@ function requestAjax(cityName) {
         //********************************************** */
 
 
-        // WEATHER FORECAST FOR EACH DAY 
+        // WEATHER 5-FORECAST FOR EACH DAY 
         //********************************************** */
         for (let i = 0; i < 6; i++) {
             // icon URL
@@ -189,6 +153,10 @@ function requestAjax(cityName) {
 
             // depending on the time the ajax will pull different array data from the API
             // if it's 
+
+            // the first forecast needs to be the one for today not tomorrow 
+            // we need to figure out a way to get the forecast according to the time of the day
+            // somehow use moment to add i + so depending on the time so we can get the right forecast for the time
 
 
             // calculating conversion from Kelvin to Farenheit
@@ -352,4 +320,7 @@ function getLastOrDefault() {
     // }, 1000);
     //************************************************************************************ */
 }
+
+
+
 
