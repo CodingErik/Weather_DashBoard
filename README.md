@@ -40,4 +40,5 @@ The following image demonstrates the application functionality:
 ## Links
 
 > You can view the application here: https://codingerik.github.io/Weather_DashBoard/
+
 > This is the Repo for the application: https://github.com/CodingErik/Weather_DashBoard
