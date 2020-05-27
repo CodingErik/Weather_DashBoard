@@ -6,7 +6,8 @@ let historyArr = []
 // or request a default
 getLastOrDefault();
 
-
+// calls the local time display 
+localTimeDisplay();
 
 // SEARCH BUTTON
 // calls the request function with the user input value 
@@ -73,7 +74,7 @@ function requestAjax(cityName) {
         // console.log(response);
         // console.log(moment.unix(response.list[0].dt).local().hours());
 
-        
+
 
         // let utcTime = moment.unix(response.list[0].dt).utc().format('YYYY-MM-DD HH:mm:ss');
 
@@ -306,28 +307,37 @@ function getLastOrDefault() {
 };
 //********************************************** */
 
+// THIS FUNCTION DISPLAYS LOCAL TIME 
+// in the dashboard
+//********************************************** */
+function localTimeDisplay() {
+
+    // current day, month, day, year, time time running the seconds
+    $("#currentDay").text(moment().format("hh:mm:ss a"));
+
+    setInterval(function () {
+        $("#currentDay").text(moment().format("hh:mm:ss a"));
+    }, 1000);
+}
+//********************************************** */
+
+
+
+
 
 //comments 
 {
 
 
-    // fonts
-    //EXTRAS*** set up a running clock for each local time 
+    // fonts [DONE]
+    //EXTRAS*** set up a running clock for each local time  [DONE]
     //EXTRAS*** set up POST
     //EXTRAS*** make the asthetic of the API better     [DONE]
-    //EXTRAS*** set up UV forecast for all week using the forecast Uv API
+    //EXTRAS*** set up UV forecast for all week using the forecast Uv API [DONE]
     //EXTRAS*** use bootswatch to find a cool UI for the weather dashboard  [DONE]
     //EXTRAS*** add chance of precipitation
     //************************************************************************************ */
-    //************************************************************************************ */
-    // current day, month, day, year, time time running the seconds
-    // lets try to make the clock change to display local time of the place that is searched
-    // $("#currentDay").text(moment().format("MMMM Do YYYY hh:mm:ss A"));
 
-    // setInterval(function () {
-    //     $("#currentDay").text(moment().format("MMMM Do YYYY hh:mm:ss A"));
-    // }, 1000);
-    //************************************************************************************ */
 }
 
 
