@@ -39,6 +39,11 @@ THEN I am presented with the last searched city forecast
 > this project follows the UV Index Scale
 > for more info on this scale visit the gov site @ https://www.epa.gov/sunsafety/uv-index-scale-0
 
+![Uv index Scale](./Assets/Uvindex.gif)
+
+
+
+
 ## Contributors
 
 > Erik De Luna ~ Developer 
