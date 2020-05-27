@@ -51,5 +51,4 @@ THEN I am presented with the last searched city forecast
 ## Links
 
 > You can view the application here: https://codingerik.github.io/Weather_DashBoard/
-
 > This is the Repo for the application: https://github.com/CodingErik/Weather_DashBoard
