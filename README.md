@@ -1,4 +1,4 @@
-# 06 Weather Dashboard
+# Weather Dashboard
 
 This is a weather dashboard application. You can see a five day forecast for any city of your choice.
 Simply type in the city you want in the search bar. This application is powered by the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities.
